@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavierOS</title>
+  <title>Javier</title>
   <style>
     :root {
       --bg-primary: #0a0a0a;
@@ -335,7 +335,7 @@
   <canvas id="bgCanvas"></canvas>
 
   <!-- Saludo -->
-  <h1 class="greeting">JavierOS</h1>
+  <h1 class="greeting">Javier</h1>
 
   <!-- Terminal redimensionable -->
   <div class="terminal-container">
@@ -555,9 +555,9 @@
     const expandedList = document.getElementById('expandedList');
 
     // Storage para funcionalidades
-    let shortUrls = JSON.parse(localStorage.getItem('javierOS_shortcuts') || '{}');
-    let personalNotes = JSON.parse(localStorage.getItem('javierOS_notes') || '[]');
-    let shortCounter = parseInt(localStorage.getItem('javierOS_counter') || '1000');
+    let shortUrls = JSON.parse(localStorage.getItem('Javier_shortcuts') || '{}');
+    let personalNotes = JSON.parse(localStorage.getItem('Javier_notes') || '[]');
+    let shortCounter = parseInt(localStorage.getItem('Javier_counter') || '1000');
 
     let extendedCategories = {};
 
@@ -632,7 +632,7 @@
     // Función para generar ID corto
     function generateShortId() {
       shortCounter++;
-      localStorage.setItem('javierOS_counter', shortCounter.toString());
+      localStorage.setItem('Javier_counter', shortCounter.toString());
       return shortCounter.toString(36);
     }
 
@@ -652,7 +652,7 @@
         clicks: 0
       };
       
-      localStorage.setItem('javierOS_shortcuts', JSON.stringify(shortUrls));
+      localStorage.setItem('Javier_shortcuts', JSON.stringify(shortUrls));
       return shortUrl;
     }
 
@@ -691,7 +691,7 @@
       };
       
       personalNotes.unshift(note);
-      localStorage.setItem('javierOS_notes', JSON.stringify(personalNotes));
+      localStorage.setItem('Javier_notes', JSON.stringify(personalNotes));
       return note;
     }
 
@@ -767,7 +767,7 @@
         // Comando help
         if (command === 'help') {
           commandOutput.innerHTML = `
-            <span style="color: var(--accent-orange);">JavierOS Commands:</span><br>
+            <span style="color: var(--accent-orange);">Javier Commands:</span><br>
             <span style="color: var(--text-secondary);">
             <strong>Navigation:</strong><br>
             • trabajo/ocio/dev/utils - Show category bookmarks<br>
@@ -920,7 +920,7 @@
       // Ctrl + / para mostrar ayuda
       if (e.ctrlKey && e.key === '/') {
         e.preventDefault();
-        console.log('JavierOS Shortcuts:');
+        console.log('Javier Shortcuts:');
         console.log('Ctrl + / : Show help');
         console.log('Ctrl + R : Reload');
         console.log('Ctrl + F : Focus search');
