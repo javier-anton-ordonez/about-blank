@@ -1,23 +1,22 @@
 {
   "Emprendimiento": [
-    { "name": "GitHub", "url": "https://github.com" },
     { "name": "Trello", "url": "https://trello.com" },
     { "name": "Slack", "url": "https://slack.com" },
     { "name": "Linear", "url": "https://linear.app/"},
     { "name": "Stripe", "url": "https://stripe.com/en-es"},
     { "name": "Stitch", "url": "https://stitch.withgoogle.com/"}, 
-    { "name": "Figma", "url": "https://figma.com" },
+    { "name": "Figma", "url": "https://figma.com" }
   ],
   "ocio": [
     { "name": "YouTube", "url": "https://youtube.com" },
     { "name": "Netflix", "url": "https://netflix.com" },
-    { "name": "Prime Video", "url": "https://primevideo.com" },
+    { "name": "Prime Video", "url": "https://primevideo.com" }
   ],
   "Apuntes": [
     { "name": "Notion", "url": "https://notion.so" },
     { "name": "Miro", "url": "https://miro.com" },
     { "name": "CodePen", "url": "https://codepen.io" },
-    { "name": "Stack Overflow", "url": "https://stackoverflow.com" },
+    { "name": "Stack Overflow", "url": "https://stackoverflow.com" }
   ],
   "utils": [
     { "name": "Dropbox", "url": "https://dropbox.com" },

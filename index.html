@@ -561,45 +561,46 @@
 
     let extendedCategories = {};
 
-    async function loadLinks() {
-      try {
-        const res = await fetch('links.json');
-        extendedCategories = await res.json();
-        renderMainCategories();
-      } catch (err) {
-        console.error('Error loading links.json:', err);
-      }
+  async function loadLinks() {
+    try {
+      const res = await fetch('links.json');
+      extendedCategories = await res.json();
+      renderMainCategories();
+    } catch (err) {
+      console.error('Error loading links.json:', err);
     }
+  }
 
-    // Renderiza la vista principal cuando ya tienes los enlaces
-    function renderMainCategories() {
-      mainCategories.innerHTML = '';
-      for (const category in extendedCategories) {
-        const column = document.createElement('div');
-        column.className = 'column';
+  // Renderiza la vista principal usando los 3 primeros enlaces de cada categoría del JSON
+  function renderMainCategories() {
+    mainCategories.innerHTML = '';
+    for (const category in extendedCategories) {
+      const column = document.createElement('div');
+      column.className = 'column';
 
-        const title = document.createElement('div');
-        title.className = 'column-title';
-        title.textContent = category;
+      const title = document.createElement('div');
+      title.className = 'column-title';
+      title.textContent = category;
 
-        const ul = document.createElement('ul');
-        ul.className = 'site-list';
+      const ul = document.createElement('ul');
+      ul.className = 'site-list';
 
-        extendedCategories[category].slice(0, 3).forEach(item => {
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = item.url;
-          a.target = '_blank';
-          a.textContent = item.name;
-          li.appendChild(a);
-          ul.appendChild(li);
-        });
+      // Mostramos solo los 3 primeros
+      extendedCategories[category].slice(0, 3).forEach(item => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = item.url;
+        a.target = '_blank';
+        a.textContent = item.name;
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
 
-        column.appendChild(title);
-        column.appendChild(ul);
-        mainCategories.appendChild(column);
-      }
+      column.appendChild(title);
+      column.appendChild(ul);
+      mainCategories.appendChild(column);
     }
+  }
 
   // Modifica showExpandedCategory para usar la lista cargada
   function showExpandedCategory(category) {
