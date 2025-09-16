@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavierOS</title>
+  <style>
+    :root {
+      --bg-color: #2c2f33;
+      --text-color: #f7f7f7;
+      --secondary-text-color: #a0a0a0;
+      --link-color: #4a90e2;
+      --link-hover-color: #6aabff;
+      --command-color: #00ff88;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+      color: var(--text-color);
+    }
+
+    /* Canvas de fondo */
+    #bgCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+
+    /* Saludo neon */
+    .greeting {
+      font-size: 3em;
+      color: #00ffcc;
+      text-shadow: 
+        0 0 5px #00ffcc,
+        0 0 10px #00ffcc,
+        0 0 20px #00ffcc,
+        0 0 40px #00ffaa;
+      animation: neonPulse 2s infinite alternate;
+    }
+    .greeting::before {
+      content: "> ";
+      color: var(--secondary-text-color);
+      text-shadow: none;
+    }
+    @keyframes neonPulse {
+      from { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+      to   { text-shadow: 0 0 20px #00ffaa, 0 0 40px #00ffaa, 0 0 60px #00ffaa; }
+    }
+
+    /* Terminal */
+    .terminal {
+      background: var(--bg-color);
+      border-radius: 8px;
+      border: 1px solid #444;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      width: 90%;
+      max-width: 1000px;
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      background: #222;
+      padding: 5px 10px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+
+    .terminal-body {
+      padding: 20px;
+    }
+
+    .command-line {
+      color: var(--command-color);
+      margin-bottom: 20px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      background: var(--command-color);
+      margin-left: 2px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      50.1%, 100% { opacity: 0; }
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .column {
+      flex: 1;
+      min-width: 200px;
+    }
+    .column-title {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      color: var(--secondary-text-color);
+      border-bottom: 1px dashed var(--secondary-text-color);
+      padding-bottom: 5px;
+    }
+    .site-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .site-list li {
+      margin-bottom: 8px;
+    }
+    .site-list a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .site-list a:hover {
+      color: var(--link-hover-color);
+    }
+    .site-list a::before {
+      content: "$ ";
+      color: var(--secondary-text-color);
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas del fondo -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Saludo -->
+  <h1 class="greeting">Hola, Javier</h1>
+
+  <!-- Terminal -->
+  <div class="terminal">
+    <div class="terminal-header">
+      <span class="btn red"></span>
+      <span class="btn yellow"></span>
+      <span class="btn green"></span>
+    </div>
+    <div class="terminal-body">
+      <div class="command-line">
+        javier@os:~$ ls Atajos.txt<span class="cursor"></span>
+      </div>
+      <div class="categories">
+        <div class="column">
+          <div class="column-title">Trabajo</div>
+          <ul class="site-list">
+            <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com" target="_blank">GitHub</a></li>
+            <li><a href="https://trello.com" target="_blank">Trello</a></li>
+          </ul>
+        </div>
+        <div class="column">
+          <div class="column-title">Ocio</div>
+          <ul class="site-list">
+            <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+            <li><a href="https://netflix.com" target="_blank">Netflix</a></li>
+            <li><a href="https://open.spotify.com" target="_blank">Spotify</a></li>
+          </ul>
+        </div>
+        <div class="column">
+          <div class="column-title">Emprendimiento</div>
+          <ul class="site-list">
+            <li><a href="https://notion.so" target="_blank">Notion</a></li>
+            <li><a href="https://chat.openai.com" target="_blank">ChatGPT</a></li>
+            <li><a href="https://miro.com" target="_blank">Miro</a></li>
+          </ul>
+        </div>
+        <div class="column">
+          <div class="column-title">Otros</div>
+          <ul class="site-list">
+            <li><a href="https://google.com" target="_blank">Google</a></li>
+            <li><a href="https://wikipedia.org" target="_blank">Wikipedia</a></li>
+            <li><a href="https://reddit.com" target="_blank">Reddit</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let stars = Array.from({length:150}, () => ({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      r: Math.random()*2
+    }));
+
+    function drawStars() {
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = 'white';
+      stars.forEach(s => {
+        ctx.beginPath();
+        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fill();
+        s.y += 0.2;
+        if (s.y > canvas.height) {
+          s.y = 0;
+          s.x = Math.random()*canvas.width;
+        }
+      });
+    }
+
+    function animate() {
+      drawStars();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>

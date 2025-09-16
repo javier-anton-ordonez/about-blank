@@ -559,49 +559,75 @@
     let personalNotes = JSON.parse(localStorage.getItem('javierOS_notes') || '[]');
     let shortCounter = parseInt(localStorage.getItem('javierOS_counter') || '1000');
 
-    // Base de datos extendida de categorías (aquí puedes añadir más enlaces)
-    const extendedCategories = {
-      trabajo: [
-        { name: 'LinkedIn', url: 'https://linkedin.com' },
-        { name: 'GitHub', url: 'https://github.com' },
-        { name: 'Trello', url: 'https://trello.com' },
-        { name: 'Slack', url: 'https://slack.com' },
-        { name: 'Jira', url: 'https://jira.atlassian.com' },
-        { name: 'GitLab', url: 'https://gitlab.com' },
-        { name: 'Asana', url: 'https://asana.com' },
-        { name: 'Microsoft Teams', url: 'https://teams.microsoft.com' },
-      ],
-      ocio: [
-        { name: 'YouTube', url: 'https://youtube.com' },
-        { name: 'Netflix', url: 'https://netflix.com' },
-        { name: 'Spotify', url: 'https://open.spotify.com' },
-        { name: 'Twitch', url: 'https://twitch.tv' },
-        { name: 'Prime Video', url: 'https://primevideo.com' },
-        { name: 'Disney+', url: 'https://disneyplus.com' },
-        { name: 'HBO Max', url: 'https://hbomax.com' },
-        { name: 'Steam', url: 'https://store.steampowered.com' },
-      ],
-      dev: [
-        { name: 'Notion', url: 'https://notion.so' },
-        { name: 'ChatGPT', url: 'https://chat.openai.com' },
-        { name: 'Miro', url: 'https://miro.com' },
-        { name: 'VS Code Online', url: 'https://vscode.dev' },
-        { name: 'Figma', url: 'https://figma.com' },
-        { name: 'CodePen', url: 'https://codepen.io' },
-        { name: 'Stack Overflow', url: 'https://stackoverflow.com' },
-        { name: 'MDN Docs', url: 'https://developer.mozilla.org' },
-      ],
-      utils: [
-        { name: 'Google', url: 'https://google.com' },
-        { name: 'Wikipedia', url: 'https://wikipedia.org' },
-        { name: 'Reddit', url: 'https://reddit.com' },
-        { name: 'Gmail', url: 'https://gmail.com' },
-        { name: 'Google Drive', url: 'https://drive.google.com' },
-        { name: 'Dropbox', url: 'https://dropbox.com' },
-        { name: 'Translate', url: 'https://translate.google.com' },
-        { name: 'Weather', url: 'https://weather.com' },
-      ]
-    };
+    let extendedCategories = {};
+
+    async function loadLinks() {
+      try {
+        const res = await fetch('links.json');
+        extendedCategories = await res.json();
+        renderMainCategories();
+      } catch (err) {
+        console.error('Error loading links.json:', err);
+      }
+    }
+
+    // Renderiza la vista principal cuando ya tienes los enlaces
+    function renderMainCategories() {
+      mainCategories.innerHTML = '';
+      for (const category in extendedCategories) {
+        const column = document.createElement('div');
+        column.className = 'column';
+
+        const title = document.createElement('div');
+        title.className = 'column-title';
+        title.textContent = category;
+
+        const ul = document.createElement('ul');
+        ul.className = 'site-list';
+
+        extendedCategories[category].slice(0, 3).forEach(item => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = item.url;
+          a.target = '_blank';
+          a.textContent = item.name;
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+
+        column.appendChild(title);
+        column.appendChild(ul);
+        mainCategories.appendChild(column);
+      }
+    }
+
+  // Modifica showExpandedCategory para usar la lista cargada
+  function showExpandedCategory(category) {
+    const items = extendedCategories[category];
+    if (!items) return false;
+
+    expandedTitle.textContent = category;
+    expandedList.innerHTML = '';
+
+    items.forEach(item => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = item.url;
+      a.target = '_blank';
+      a.textContent = item.name;
+      li.appendChild(a);
+      expandedList.appendChild(li);
+    });
+
+    mainCategories.style.display = 'none';
+    expandedView.style.display = 'block';
+    commandOutput.innerHTML = `<span style="color: var(--accent-cyan);">Showing ${category} category (${items.length} items)</span>`;
+
+    return true;
+  }
+
+  // Llama a loadLinks en el arranque
+  loadLinks();
 
     // Función para generar ID corto
     function generateShortId() {
