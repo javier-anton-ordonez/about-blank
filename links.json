@@ -1,42 +1,27 @@
 {
-  "trabajo": [
-    { "name": "LinkedIn", "url": "https://linkedin.com" },
+  "Emprendimiento": [
     { "name": "GitHub", "url": "https://github.com" },
     { "name": "Trello", "url": "https://trello.com" },
     { "name": "Slack", "url": "https://slack.com" },
-    { "name": "Jira", "url": "https://jira.atlassian.com" },
-    { "name": "GitLab", "url": "https://gitlab.com" },
-    { "name": "Asana", "url": "https://asana.com" },
-    { "name": "Microsoft Teams", "url": "https://teams.microsoft.com" }
+    { "name": "Linear", "url": "https://linear.app/"},
+    { "name": "Stripe", "url": "https://stripe.com/en-es"},
+    { "name": "Stitch", "url": "https://stitch.withgoogle.com/"}, 
+    { "name": "Figma", "url": "https://figma.com" },
   ],
   "ocio": [
     { "name": "YouTube", "url": "https://youtube.com" },
     { "name": "Netflix", "url": "https://netflix.com" },
-    { "name": "Spotify", "url": "https://open.spotify.com" },
-    { "name": "Twitch", "url": "https://twitch.tv" },
     { "name": "Prime Video", "url": "https://primevideo.com" },
-    { "name": "Disney+", "url": "https://disneyplus.com" },
-    { "name": "HBO Max", "url": "https://hbomax.com" },
-    { "name": "Steam", "url": "https://store.steampowered.com" }
   ],
-  "dev": [
+  "Apuntes": [
     { "name": "Notion", "url": "https://notion.so" },
-    { "name": "ChatGPT", "url": "https://chat.openai.com" },
     { "name": "Miro", "url": "https://miro.com" },
-    { "name": "VS Code Online", "url": "https://vscode.dev" },
-    { "name": "Figma", "url": "https://figma.com" },
     { "name": "CodePen", "url": "https://codepen.io" },
     { "name": "Stack Overflow", "url": "https://stackoverflow.com" },
-    { "name": "MDN Docs", "url": "https://developer.mozilla.org" }
   ],
   "utils": [
-    { "name": "Google", "url": "https://google.com" },
-    { "name": "Wikipedia", "url": "https://wikipedia.org" },
-    { "name": "Reddit", "url": "https://reddit.com" },
-    { "name": "Gmail", "url": "https://gmail.com" },
-    { "name": "Google Drive", "url": "https://drive.google.com" },
     { "name": "Dropbox", "url": "https://dropbox.com" },
-    { "name": "Translate", "url": "https://translate.google.com" },
-    { "name": "Weather", "url": "https://weather.com" }
+    { "name": "SwissTransfer", "url": "https://www.swisstransfer.com/es-es"}
+    
   ]
 }
