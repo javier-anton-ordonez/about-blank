@@ -1,5 +1,5 @@
 {
-  "Emprendimiento": [
+  "dev": [
     { "name": "Trello", "url": "https://trello.com" },
     { "name": "Slack", "url": "https://slack.com" },
     { "name": "Linear", "url": "https://linear.app/"},
@@ -12,13 +12,13 @@
     { "name": "Netflix", "url": "https://netflix.com" },
     { "name": "Prime Video", "url": "https://primevideo.com" }
   ],
-  "Apuntes": [
+  "keep": [
     { "name": "Notion", "url": "https://notion.so" },
     { "name": "Miro", "url": "https://miro.com" },
     { "name": "CodePen", "url": "https://codepen.io" },
     { "name": "Stack Overflow", "url": "https://stackoverflow.com" }
   ],
-  "utils": [
+  "utiles": [
     { "name": "Dropbox", "url": "https://dropbox.com" },
     { "name": "SwissTransfer", "url": "https://www.swisstransfer.com/es-es"}
     
